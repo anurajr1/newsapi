@@ -1,6 +1,8 @@
 package com.anuraj.newsapi;
 
 import android.os.Bundle;
+
+import com.anuraj.newsapi.fragment.BBCNewsFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import android.os.Handler;
@@ -16,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Menu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
@@ -42,6 +45,10 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        //setting the display and naviagtion drawer selection to BBC news View
+        displayView(R.id.nav_bbc_home);
+        navigationView.setCheckedItem(R.id.nav_bbc_home);
     }
 
     boolean doubleBackToExitPressedOnce = false;
@@ -104,7 +111,7 @@ public class MainActivity extends AppCompatActivity
 
         switch (viewId) {
             case R.id.nav_bbc_home:
-             //   fragment = new TeamCalenderFragment();
+                fragment = new BBCNewsFragment();
                 title =getString(R.string.bbc_news);
                 break;
 
