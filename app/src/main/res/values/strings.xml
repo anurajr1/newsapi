@@ -15,4 +15,5 @@
     <string name="menu_send">Send</string>
 
     <string name="bbc_news">BBC News</string>
+    <string name="exit_msg">Please click BACK again to exit.</string>
 </resources>
