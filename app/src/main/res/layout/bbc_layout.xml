@@ -11,30 +11,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <!--<android.support.design.widget.TabLayout-->
-        <!--android:id="@+id/bbc_tabs"-->
-        <!--android:background="@color/colorPrimaryDark"-->
-        <!--app:tabTextColor="@color/TextWhite"-->
-        <!--app:tabSelectedTextColor="@color/colorAccent"-->
-        <!--app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"-->
-        <!--app:tabIndicatorColor="@color/colorAccent"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:tabMode="scrollable"/>-->
-
-        <!--<android.support.v4.view.ViewPager-->
-            <!--android:layout_below="@+id/bbc_tabs"-->
-            <!--android:id="@+id/viewpager"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/bbc_tabs"
+        android:background="@color/colorPrimary"
+        app:tabTextColor="@color/TextWhite"
+        app:tabSelectedTextColor="@color/TextWhite"
+        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+        app:tabIndicatorColor="@color/colorAccent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="121dp"
-        android:layout_marginTop="221dp"
-        android:text="TextView" />
+        app:tabMode="scrollable"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/bbc_tabs"
+        />
+
+
 </RelativeLayout>
