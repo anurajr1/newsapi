@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.anuraj.newsapi.R;
+import com.anuraj.newsapi.ViewActivity.WebViewActivity;
 import com.anuraj.newsapi.model.NewsModel;
 import com.bumptech.glide.Glide;
 
@@ -56,7 +57,6 @@ public class NewsAdapter extends BaseAdapter {
         TextView news_title,news_time;
         ImageView news_image;
 
-
         inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -75,7 +75,7 @@ public class NewsAdapter extends BaseAdapter {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(context, NewsAdapter.class);
+                Intent intent = new Intent(context, WebViewActivity.class);
                 //pass the selected data to another activity
                 intent.putExtra(NEWS_URL,data.get(position).getUrl());
                 // Start SingleItemView Class
