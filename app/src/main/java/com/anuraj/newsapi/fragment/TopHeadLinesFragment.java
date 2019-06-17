@@ -7,17 +7,22 @@
 
 package com.anuraj.newsapi.fragment;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.anuraj.newsapi.R;
-import com.anuraj.newsapi.model.Article;
+import com.anuraj.newsapi.Util.NetworkCheck;
+import com.anuraj.newsapi.adapter.NewsAdapter;
 import com.anuraj.newsapi.model.NewsModel;
 import com.anuraj.newsapi.remote.HttpHandler;
 import com.anuraj.newsapi.remote.NetworkParsing;
@@ -27,7 +32,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static com.anuraj.newsapi.Util.Constants.NEWS_PUBLISHEDAT;
 import static com.anuraj.newsapi.Util.Constants.NEWS_TITLE;
@@ -37,6 +41,9 @@ import static com.anuraj.newsapi.Util.Constants.NEWS_URLTOIMAGE;
 
 public class TopHeadLinesFragment extends Fragment {
     View rootView;
+    ListView newsList;
+    ArrayList<NewsModel> arr;
+    ProgressDialog progressDialog;
     public TopHeadLinesFragment() {
     }
 
@@ -45,8 +52,19 @@ public class TopHeadLinesFragment extends Fragment {
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.top_headline_layout, container, false);
 
-        NewsSync newsSync = new NewsSync();
-        newsSync.execute();
+        newsList = (ListView) rootView.findViewById(R.id.News_list);
+
+        if(NetworkCheck.isNetworkAvailable(getContext())){
+            progressDialog = new ProgressDialog(getContext());
+            progressDialog.setMessage("Loading Data");
+            progressDialog.show();
+
+            NewsSync newsSync = new NewsSync();
+            newsSync.execute();
+        }else{
+            Toast.makeText(getContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
+        }
+
 
         return rootView;
     }
@@ -75,7 +93,7 @@ public class TopHeadLinesFragment extends Fragment {
                     JSONObject jsonResponse = new JSONObject(json);
                     JSONArray jsonArray = jsonResponse.optJSONArray("articles");
 
-                    ArrayList<NewsModel> arr = new ArrayList<NewsModel>();
+                    arr = new ArrayList<NewsModel>();
                     for (int i = 0; i < jsonArray.length(); i++) {
                         NewsModel news = new NewsModel();
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -89,6 +107,8 @@ public class TopHeadLinesFragment extends Fragment {
                     Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
                 }
 
+                NewsAdapter adapter = new NewsAdapter(TopHeadLinesFragment.this, arr);
+                newsList.setAdapter(adapter);
 
 
             }else{
