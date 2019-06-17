@@ -8,6 +8,7 @@
 package com.anuraj.newsapi.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,8 @@ import com.anuraj.newsapi.model.NewsModel;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+
+import static com.anuraj.newsapi.Util.Constants.NEWS_URL;
 
 public class NewsAdapter extends BaseAdapter {
 
@@ -68,30 +71,18 @@ public class NewsAdapter extends BaseAdapter {
         news_time.setText(data.get(position).getPublishedAt());
         Glide.with(context).load(data.get(position).getUrlToImage()).into(news_image);
 
-
-        // Capture position and set results to the ImageView
-        // Passes flag images URL into ImageLoader.class
-     //   imageLoader.DisplayImage(resultp.get(SplashScreen.COMPANY_LOGO), flag);
-
         // Capture ListView item click
-//        itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View arg0) {
-//                // Get the position
-//                resultp = data.get(position);
-//                Intent intent = new Intent(context, SingleItemView.class);
-//                //pass the selected data to another activity
-//                intent.putExtra("companyname",resultp.get(SplashScreen.COMAPANY_NAME));
-//                intent.putExtra("companylogo", resultp.get(SplashScreen.COMPANY_LOGO));
-//
-//                intent.putExtra("certificationname", resultp.get(SplashScreen.CERTIFICATION_NAME));
-//                intent.putExtra("partnerId", resultp.get(SplashScreen.PARTNER_ID));
-//
-//                // Start SingleItemView Class
-//                context.startActivity(intent);
-//
-//            }
-//        });
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(context, NewsAdapter.class);
+                //pass the selected data to another activity
+                intent.putExtra(NEWS_URL,data.get(position).getUrl());
+                // Start SingleItemView Class
+                context.startActivity(intent);
+
+            }
+        });
         return itemView;
     }
 }
