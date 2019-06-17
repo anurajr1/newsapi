@@ -31,7 +31,12 @@ public class HttpHandler {
         try {
             URL url = new URL(Url);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(10000);
+            conn.setConnectTimeout(10000);
             conn.setRequestMethod("GET");
+            conn.setUseCaches(false);
+            conn.setAllowUserInteraction(false);
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             // read the response
             InputStream in = new BufferedInputStream(conn.getInputStream());
             response = convertStreamToString(in);
