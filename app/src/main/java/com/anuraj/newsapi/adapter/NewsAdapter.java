@@ -20,13 +20,7 @@ import com.anuraj.newsapi.R;
 import com.anuraj.newsapi.ViewActivity.WebViewActivity;
 import com.anuraj.newsapi.model.NewsModel;
 import com.bumptech.glide.Glide;
-
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Locale;
-import java.util.TimeZone;
-
 import static com.anuraj.newsapi.Util.Constants.NEWS_URL;
 import static com.anuraj.newsapi.Util.Constants.formatFrom;
 import static com.anuraj.newsapi.Util.Constants.formatTo;
@@ -80,6 +74,7 @@ public class NewsAdapter extends BaseAdapter {
         }
         catch(Exception e){}
 
+        //Glide library to load image
         Glide.with(context).load(data.get(position).getUrlToImage()).into(news_image);
 
         // Capture ListView item click
