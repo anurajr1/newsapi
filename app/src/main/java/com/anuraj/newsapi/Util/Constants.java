@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 public interface Constants {
-    String API_KEY = "8190df9eb51445228e397e4185311a66";
+    String API_KEY = "06e9be9762334919a72b61276dfc8375";
     String NEWS_SOURCE = "bbc-news";
     String NEWS_AUTHOR = "author";
     String NEWS_TITLE = "title";
@@ -20,9 +20,9 @@ public interface Constants {
     String NEWS_URLTOIMAGE = "urlToImage";
     String NEWS_PUBLISHEDAT = "publishedAt";
     String NEWS_API = "https://newsapi.org/v2/";
-    static final SimpleDateFormat formatTo =
+    SimpleDateFormat formatTo =
             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault());
-    static final  SimpleDateFormat formatFrom =
+    SimpleDateFormat formatFrom =
             new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
 
 }
