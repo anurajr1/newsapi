@@ -9,6 +9,7 @@ package com.anuraj.newsapi.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,8 @@ import com.anuraj.newsapi.ViewActivity.WebViewActivity;
 import com.anuraj.newsapi.model.NewsModel;
 import com.bumptech.glide.Glide;
 import java.util.ArrayList;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 import static com.anuraj.newsapi.Util.Constants.NEWS_URL;
 import static com.anuraj.newsapi.Util.Constants.formatFrom;
 import static com.anuraj.newsapi.Util.Constants.formatTo;
@@ -28,9 +31,8 @@ import static com.anuraj.newsapi.Util.Constants.formatTo;
 public class NewsAdapter extends BaseAdapter {
 
     // Declare Variables
-    Context context;
-    LayoutInflater inflater;
-    ArrayList<NewsModel> data;
+    private Context context;
+    private ArrayList<NewsModel> data;
     public NewsAdapter(Context context,
                            ArrayList<NewsModel> arraylist) {
         this.context = context;
@@ -57,7 +59,7 @@ public class NewsAdapter extends BaseAdapter {
         TextView news_title,news_time;
         ImageView news_image;
 
-        inflater = (LayoutInflater) context
+        LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View itemView = inflater.inflate(R.layout.list_row_item, parent, false);
@@ -72,7 +74,9 @@ public class NewsAdapter extends BaseAdapter {
         try {
             news_time.setText(formatFrom.format(formatTo.parse(data.get(position).getPublishedAt())));
         }
-        catch(Exception e){}
+        catch(Exception e){
+            Log.e(TAG, "NewsAdapter: " + e.getMessage());
+        }
 
         //Glide library to load image
         Glide.with(context).load(data.get(position).getUrlToImage()).into(news_image);
