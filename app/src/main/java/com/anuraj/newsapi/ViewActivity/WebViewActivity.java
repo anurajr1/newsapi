@@ -30,12 +30,10 @@ import static com.anuraj.newsapi.Util.Constants.NEWS_URL;
 
 public class WebViewActivity extends AppCompatActivity {
     Intent intent;
-    //WebView webView;
-    ProgressBar bar;
     String url = "";
 
     private WebView webView;
-    static final int CLOSEPROGRESS = 5000;
+    static final int CLOSEPROGRESS = 3000;
 
     Activity activity ;
     private ProgressDialog progDailog;
@@ -49,7 +47,6 @@ public class WebViewActivity extends AppCompatActivity {
         setupToolBar();
 
         webView = (WebView) findViewById(R.id.web_view);
-        //bar=(ProgressBar) findViewById(R.id.progressBar2);
         webView.setWebViewClient(new myWebclient());
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setLoadWithOverviewMode(true);
