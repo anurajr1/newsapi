@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.anuraj.newsapi.fragment.BBCNewsFragment;
 import android.os.Handler;
+
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
@@ -59,7 +60,6 @@ public class MainActivity extends AppCompatActivity
             }, 2000);
         }else {
             super.onBackPressed();
-            return;
         }
     }
 

@@ -8,13 +8,11 @@
 package com.anuraj.newsapi.fragment;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -40,10 +38,10 @@ import static com.anuraj.newsapi.Util.Constants.NEWS_URLTOIMAGE;
 
 
 public class TopHeadLinesFragment extends Fragment {
-    View rootView;
-    ListView newsList;
-    ArrayList<NewsModel> arr;
-    ProgressDialog progressDialog;
+    private View rootView;
+    private ListView newsList;
+    private ArrayList<NewsModel> arr;
+    private ProgressDialog progressDialog;
     public TopHeadLinesFragment() {
     }
 
