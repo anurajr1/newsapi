@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
@@ -21,6 +22,7 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.anuraj.newsapi.R;
 
@@ -44,7 +46,7 @@ public class WebViewActivity extends AppCompatActivity {
         intent = getIntent();
         setContentView(R.layout.webview_layout);
         //setting the close icon and title name
-        //setupToolBar();
+        setupToolBar();
 
         webView = (WebView) findViewById(R.id.web_view);
         //bar=(ProgressBar) findViewById(R.id.progressBar2);
@@ -93,7 +95,8 @@ public class WebViewActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if((keyCode== KeyEvent.KEYCODE_BACK) && webView.canGoBack()){
-            webView.goBack();
+            //webView.goBack();
+            activity.finish();
             return true;
         }
 
@@ -101,15 +104,15 @@ public class WebViewActivity extends AppCompatActivity {
     }
 
     //design the toolbar programatically
-//    private void setupToolBar() {
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.sensor_detail_toolbar);
-//        if (toolbar == null) return;
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setTitle(intent.getStringExtra("companyname"));
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back_arrow);
-//
-//    }
+    private void setupToolBar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        if (toolbar == null) return;
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(intent.getStringExtra("companyname"));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back_arrow);
+
+    }
 
     //closing the current screen by clicking the cross button
     @Override
@@ -126,11 +129,11 @@ public class WebViewActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-//        if (id == R.id.action_open_browser) {
-//            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-//            startActivity(browserIntent);
-//            return true;
-//        }
+        if (id == R.id.action_open_browser) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(browserIntent);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
