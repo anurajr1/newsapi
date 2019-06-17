@@ -122,7 +122,7 @@ public class WebViewActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //getMenuInflater().inflate(R.menu.webview_menu, menu);
+        getMenuInflater().inflate(R.menu.webview_menu, menu);
         return true;
     }
 
