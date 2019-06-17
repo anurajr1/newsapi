@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.anuraj.newsapi.R;
 import com.anuraj.newsapi.model.NewsModel;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -50,23 +51,22 @@ public class NewsAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         // Declare Variables
         TextView news_title,news_time;
-        ImageView flag;
+        ImageView news_image;
 
 
         inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View itemView = inflater.inflate(R.layout.list_row_item, parent, false);
-        // Get the position
-       // resultp = data.get(position);
-
         // Locate the TextViews in listview_item.xml
         news_title = (TextView) itemView.findViewById(R.id.news_title);
         news_time = (TextView) itemView.findViewById(R.id.news_time);
+        news_image = (ImageView) itemView.findViewById(R.id.news_image);
 
         // Capture position and set results to the TextViews
         news_title.setText(data.get(position).getTitle());
         news_time.setText(data.get(position).getPublishedAt());
+        Glide.with(context).load(data.get(position).getUrlToImage()).into(news_image);
 
 
         // Capture position and set results to the ImageView
