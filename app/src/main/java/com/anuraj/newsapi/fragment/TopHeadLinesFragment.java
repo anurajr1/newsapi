@@ -107,13 +107,14 @@ public class TopHeadLinesFragment extends Fragment {
                     Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
                 }
 
-                NewsAdapter adapter = new NewsAdapter(TopHeadLinesFragment.this, arr);
+                NewsAdapter adapter = new NewsAdapter(getContext(), arr);
                 newsList.setAdapter(adapter);
 
 
             }else{
                 Toast.makeText(getContext(), "No items found", Toast.LENGTH_SHORT).show();
             }
+            progressDialog.dismiss();
         }
 
 
