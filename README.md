@@ -8,10 +8,10 @@ Demo app showcasing the Usage of News Api - https://newsapi.org/
 An NewsAPI app to list all the news feeds in a list. The selection of any new feed would load 
 the detail page of news in App WebView. The task includes 
 
-★  List of all the news with on demand updates 
-★  Show the details and images on the details page 
-★  Simple Apporach using Navigation Drawer
-★  Option to open in external browser 
+★ List of all the news with on demand updates 
+★ Show the details and images on the details page 
+★ Simple Apporach using Navigation Drawer
+★ Option to open in external browser 
 
 
 ## Screenshots
